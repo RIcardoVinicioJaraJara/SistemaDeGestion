@@ -10,13 +10,12 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
 <head>
     <meta charset="UTF-8">
     <title>Gestión de usuarios</title>
+
 </head>
 
 <body>
-
-    <a href='../../../config/cerrar_sesion.php'>Cerrar Sesión</a>
-
-    <table border style="width:100%">
+    <table border>
+        <a href='../../../config/cerrar_sesion.php'>Cerrar Sesión </a>
         <tr>
             <th>Cedula</th>
             <th>Nombres</th>
@@ -25,6 +24,7 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
             <th>Telefono</th>
             <th>Correo</th>
             <th>Fecha Nacimiento</th>
+            <th>Tipo de usuario</th>
         </tr>
 
         <?php
@@ -43,6 +43,7 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
                 echo " <td>" . $row['usu_telefono'] . "</td>";
                 echo " <td>" . $row['usu_correo'] . "</td>";
                 echo " <td>" . $row['usu_fecha_nacimiento'] . "</td>";
+                echo " <td>" . $row['usu_rol'] . "</td>";
                 echo " <td> <a href='eliminar.php?codigo=" . $row['usu_codigo'] . "'>Eliminar</a> </td>";
                 echo " <td> <a href='modificar.php?codigo=" . $row['usu_codigo'] . "'>Modificar</a> </td>";
                 echo " <td> <a href='cambiar_contrasena.php?codigo=" . $row['usu_codigo'] . "'>Cambiar
@@ -58,6 +59,7 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
         $conn->close();
         ?>
     </table border>
+
 </body>
 
 </html>

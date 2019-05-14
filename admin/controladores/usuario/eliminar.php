@@ -16,7 +16,7 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
     <?php
     //incluir conexión a la base de datos
     include '../../../config/conexionBD.php';
-    $codigo = $_POST["codigo"];
+    $codigo = isset($_POST["codigo"]) ? trim($_POST["codigo"]) : trim($_GET["codigo"]);
 
     //Si voy a eliminar físicamente el registro de la tabla
     //$sql = "DELETE FROM usuario WHERE codigo = '$codigo'";

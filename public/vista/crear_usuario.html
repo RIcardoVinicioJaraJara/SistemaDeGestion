@@ -41,8 +41,18 @@
             <input type="password" id="contrasena" name="contrasena" value="" placeholder="Ingrese sucontraseña ..."
                 required />
             <br>
+            <label for="rol">Tipo de Usuario (*)</label>
+            <input list="browsers" name="rol" id="rol">
+            <datalist id="browsers">
+                <option value="ADMIN">
+                <option value="USER">
+            </datalist>
+
+            <br>
             <input type="submit" id="crear" name="crear" value="Aceptar" />
             <input type="reset" id="cancelar" name="cancelar" value="Cancelar" />
+
+
     </form>
     </fieldset>
 </body>
