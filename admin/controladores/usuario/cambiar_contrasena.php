@@ -22,7 +22,7 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
     $sqlContrasena1 = "SELECT * FROM usuario where usu_codigo=$codigo and
     usu_password=MD5('$contrasena1')";
     $result1 = $conn->query($sqlContrasena1);
-
+    $row = $result1->fetch_assoc();
     if ($result1->num_rows > 0) {
         date_default_timezone_set("America/Guayaquil");
         $fecha = date('Y-m-d H:i:s', time());
@@ -38,7 +38,12 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
     } else {
         echo "<p>La contraseña actual no coincide con nuestros registros!!! </p>";
     }
-    echo "<a href='../../vista/usuario/index.php'>Regresar</a>";
+
+    if ($row['ADMIN'] == 'ADMIN') {
+        echo '<a href="../../vista/usuario/index.php"> <input type="button" id="cancelar" name="cancelar" value="REGRESAR"></a>';
+    } else {
+        echo '<a href="../../../public/vista/login.html"> <input type="button" id="cancelar" name="cancelar" value="Salir"></a>';
+    }
     $conn->close();
 
     ?>

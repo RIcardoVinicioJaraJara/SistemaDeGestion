@@ -58,8 +58,9 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
         }
         $conn->close();
         ?>
-    </table border>
 
+    </table border>
+    <a href="../../../public/vista/login.html"><input type="button" id="cancelar" name="cancelar" value="Salir"></a>
 </body>
 
 </html>

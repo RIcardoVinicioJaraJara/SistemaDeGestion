@@ -52,7 +52,7 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
         <a href="../../controladores/usuario/eliminar.php?codigo=<?php echo $row["usu_codigo"]; ?>"><input type="button" id="eliminar" name="eliminar" value="Eliminar"></a>
         <a href="modificar.php?codigo=<?php echo $row["usu_codigo"]; ?>"><input type="button" id="modifcar" name="modifcar" value="Modificar"></a>
         <a href="cambiar_contrasena.php?codigo=<?php echo $row["usu_codigo"]; ?>"><input type="button" id="cambiar" name="cambiar" value="Cambiar Contraseña"></a>
+        <a href="../../../public/vista/login.html"><input type="button" id="cancelar" name="cancelar" value="Salir"></a>
 
-        <input type="reset" id="cancelar" name="cancelar" value="Cancelar" />
     </form>
 </body>
