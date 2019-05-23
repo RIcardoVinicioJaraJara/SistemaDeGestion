@@ -25,10 +25,13 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
             <th>Correo</th>
             <th>Fecha Nacimiento</th>
             <th>Tipo de usuario</th>
+            <th>Estado</th>
+            <th colspan="3">OPCIONES</th>
         </tr>
 
         <?php
         include '../../../config/conexionBD.php';
+        $codigo = $_GET["codigo"];
         $sql = "SELECT * FROM usuario";
         $result = $conn->query($sql);
 
@@ -44,23 +47,34 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
                 echo " <td>" . $row['usu_correo'] . "</td>";
                 echo " <td>" . $row['usu_fecha_nacimiento'] . "</td>";
                 echo " <td>" . $row['usu_rol'] . "</td>";
-                echo " <td> <a href='eliminar.php?codigo=" . $row['usu_codigo'] . "'>Eliminar</a> </td>";
-                echo " <td> <a href='modificar.php?codigo=" . $row['usu_codigo'] . "'>Modificar</a> </td>";
-                echo " <td> <a href='cambiar_contrasena.php?codigo=" . $row['usu_codigo'] . "'>Cambiar
-               contraseña</a> </td>";
+
+                if ($row['usu_eliminado'] == 'S') {
+                    echo " <td>" . 'Eliminado' . "</td>";
+                    echo " <td> <a href='reactivar.php?codigo=" . $row['usu_codigo'] . "&rol=ADMIN&cod=" . $codigo . "' > Activar </a></td> ";
+                } else {
+                    echo " <td> " . 'Activo' . "</td> ";
+                    echo " <td><a href  ='eliminar.php?codigo=" . $row['usu_codigo'] . "&rol=ADMIN&cod=" . $codigo . "' >Eliminar </a></td>";
+                }
+                echo "   <td><a href='modificar.php?codigo="  . $row['usu_codigo'] . "&rol=ADMIN&cod=" . $codigo . "' >Modificar </a></td>";
+                echo "   <td><a href='cambiar_contrasena.php?codigo=" . $row['usu_codigo'] . "&rol=ADMIN&cod=" . $codigo . "' > Cambiar Contraseña</a> </td>";
 
                 echo "</tr>";
             }
         } else {
+
             echo "<tr>";
-            echo " <td colspan='7'> No existen usuarios registradas en el sistema </td>";
+            echo " <td colspan=' 7'> No existen usuarios    r  e g  i stradas en el sistema  < / td > ";
             echo "</tr>";
         }
         $conn->close();
         ?>
 
-    </table border>
-    <a href="../../../public/vista/login.html"><input type="button" id="cancelar" name="cancelar" value="Salir"></a>
+
+
+        </t a b l e b o r d er>
+        <a h re f=" . . /.. /../p ublic/vis t a/logi  n.html ">
+            <inp ut type="b utton" i d="cancel ar" n ame="cancelar" value="Salir">
+        </a>
 </body>
 
 </html>

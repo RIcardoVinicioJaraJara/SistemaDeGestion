@@ -16,10 +16,10 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
     <?php
     //incluir conexión a la base de datos
     include '../../../config/conexionBD.php';
-
+    $cod = $_GET["cod"];
+    $tipo = $_GET["rol"];
 
     $codigo = $_POST["codigo"];
-    $tipo = isset($_POST["tipo"]) ? trim($_POST["tipo"]) : trim($_GET["tipo"]);
 
     $cedula = isset($_POST["cedula"]) ? trim($_POST["cedula"]) : null;
     $nombres = isset($_POST["nombres"]) ? mb_strtoupper(trim($_POST["nombres"]), 'UTF-8') : null;
@@ -51,7 +51,7 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn) . "<br>";
     }
     if ($tipo == 'ADMIN') {
-        echo '<a href="../../vista/usuario/index.php"> <input type="button" id="cancelar" name="cancelar" value="REGRESAR"></a>';
+        echo "<a href=\"../../vista/usuario/index.php?codigo=$cod\"> <input type=\"button\" id=\"cancelar\" name=\"cancelar\" value=\"REGRESAR\"></a>";
     } else {
         echo "<a href=\"../../vista/usuario/index_usuario.php?codigo=$codigo\"> <input type=\"button\" id=\"cancelar\" name=\"cancelar\" value=\"REGRESAR\"></a>";
     }

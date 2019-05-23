@@ -16,6 +16,13 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
     <?php
 
     $codigo = $_GET["codigo"];
+    $cod = $_GET["cod"];
+    $rol = $_GET["rol"];
+    if ($rol == 'USER') {
+        $dir = "index_usuario.php?codigo=$codigo";
+    } else {
+        $dir = "index.php?codigo=$cod";
+    }
     $sql = "SELECT * FROM usuario where usu_codigo=$codigo";
 
     include '../../../config/conexionBD.php';
@@ -25,7 +32,7 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
 
         while ($row = $result->fetch_assoc()) {
             ?>
-            <form id="formulario01" method="POST" action="../../controladores/usuario/eliminar.php">
+            <form id="formulario01" method="POST" action="../../controladores/usuario/eliminar.php?rol=ADMIN&cod=<?php echo "$cod"; ?>">
                 <input type="hidden" id="codigo" name="codigo" value="<?php echo $codigo ?>" />
                 <label for="cedula">Cedula (*)</label>
                 <input type="text" id="cedula" name="cedula" value="<?php echo $row["usu_cedula"]; ?>" disabled />
@@ -55,7 +62,7 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
                 <br>
 
                 <input type="submit" id="eliminar" name="eliminar" value="Eliminar" />
-                <input type="reset" id="cancelar" name="cancelar" value="Cancelar" />
+                <input type="reset" id="cancelar" name="cancelar" value="Cancelar" onclick='location.href=" <?php echo "$dir";  ?>"' />
             </form>
         <?php
     }

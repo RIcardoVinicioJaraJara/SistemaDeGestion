@@ -16,10 +16,11 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
     <?php
     $codigo = $_GET["codigo"];
     $rol = $_GET["rol"];
+    $cod = $_GET["cod"];
     if ($rol == 'USER') {
         $dir = "index_usuario.php?codigo=$codigo";
     } else {
-        $dir = "index.php?codigo=$codigo";
+        $dir = "index.php?codigo=$cod";
     }
     ?>
     <form id="formulario01" method="POST" action="../../controladores/usuario/cambiar_contrasena.php?rol=<?php echo "$rol"; ?>">

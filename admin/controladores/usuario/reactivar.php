@@ -18,15 +18,15 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
     include '../../../config/conexionBD.php';
     $cod = $_GET["cod"];
     $rol = $_GET["rol"];
+
     $codigo = isset($_POST["codigo"]) ? trim($_POST["codigo"]) : trim($_GET["codigo"]);
-    $rol = isset($_POST["rol"]) ? trim($_POST["rol"]) : trim($_GET["rol"]);
 
     //Si voy a eliminar físicamente el registro de la tabla
     //$sql = "DELETE FROM usuario WHERE codigo = '$codigo'";
     date_default_timezone_set("America/Guayaquil");
     $fecha = date('Y-m-d H:i:s', time());
 
-    $sql = "UPDATE usuario SET usu_eliminado = 'S', usu_fecha_modificacion = '$fecha' WHERE
+    $sql = "UPDATE usuario SET usu_eliminado = 'N', usu_fecha_modificacion = '$fecha' WHERE
     usu_codigo = $codigo";
     if ($conn->query($sql) === TRUE) {
         echo "<p>Se ha eliminado los datos correctamemte!!!</p>";
