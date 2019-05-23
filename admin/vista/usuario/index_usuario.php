@@ -104,8 +104,11 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
         $codigo = $_GET["codigo"];
         include '../../../config/conexionBD.php';
 
-        
+
         $sql = "SELECT * FROM usuario where usu_codigo=$codigo";
+        $row = $conn->query($sql)->fetch_assoc();
+
+        $sql = "SELECT * FROM correo where cor_resptor=$codigo and ";
         $row = $conn->query($sql)->fetch_assoc();
 
         ?>
