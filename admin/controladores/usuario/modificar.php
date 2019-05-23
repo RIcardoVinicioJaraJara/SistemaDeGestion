@@ -19,6 +19,8 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
 
 
     $codigo = $_POST["codigo"];
+    $tipo = isset($_POST["tipo"]) ? trim($_POST["tipo"]) : trim($_GET["tipo"]);
+
     $cedula = isset($_POST["cedula"]) ? trim($_POST["cedula"]) : null;
     $nombres = isset($_POST["nombres"]) ? mb_strtoupper(trim($_POST["nombres"]), 'UTF-8') : null;
     $apellidos = isset($_POST["apellidos"]) ? mb_strtoupper(trim($_POST["apellidos"]), 'UTF-8') : null;
@@ -26,6 +28,7 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
     $telefono = isset($_POST["telefono"]) ? trim($_POST["telefono"]) : null;
     $correo = isset($_POST["correo"]) ? trim($_POST["correo"]) : null;
     $fechaNacimiento = isset($_POST["fechaNacimiento"]) ? trim($_POST["fechaNacimiento"]) : null;
+    $rol = isset($_POST["rol"]) ? trim($_POST["rol"]) : null;
 
     date_default_timezone_set("America/Guayaquil");
     $fecha = date('Y-m-d H:i:s', time());
@@ -38,7 +41,8 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
         "usu_telefono = '$telefono', " .
         "usu_correo = '$correo', " .
         "usu_fecha_nacimiento = '$fechaNacimiento', " .
-        "usu_fecha_modificacion = '$fecha' " .
+        "usu_fecha_modificacion = '$fecha', " .
+        "usu_rol = '$rol' " .
         "WHERE usu_codigo = $codigo";
 
     if ($conn->query($sql) === TRUE) {
@@ -46,7 +50,11 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn) . "<br>";
     }
-    echo "<a href='../../vista/usuario/index.php'>Regresar</a>";
+    if ($tipo == 'ADMIN') {
+        echo '<a href="../../vista/usuario/index.php"> <input type="button" id="cancelar" name="cancelar" value="REGRESAR"></a>';
+    } else {
+        echo "<a href=\"../../vista/usuario/index_usuario.php?codigo=$codigo\"> <input type=\"button\" id=\"cancelar\" name=\"cancelar\" value=\"REGRESAR\"></a>";
+    }
 
     $conn->close();
     ?>

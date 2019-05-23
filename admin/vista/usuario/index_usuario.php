@@ -49,9 +49,13 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
         <label for="correo">Correo electrónico (*)</label>
         <input type="email" id="correo" name="correo" value="<?php echo $row["usu_correo"]; ?>" disabled />
         <br>
-        <a href="../../controladores/usuario/eliminar.php?codigo=<?php echo $row["usu_codigo"]; ?>"><input type="button" id="eliminar" name="eliminar" value="Eliminar"></a>
-        <a href="modificar.php?codigo=<?php echo $row["usu_codigo"]; ?>"><input type="button" id="modifcar" name="modifcar" value="Modificar"></a>
-        <a href="cambiar_contrasena.php?codigo=<?php echo $row["usu_codigo"]; ?>"><input type="button" id="cambiar" name="cambiar" value="Cambiar Contraseña"></a>
+        <label for="ROL">Rol de Usuario (*)</label>
+        <input type="text" id="rol" name="rol" value="<?php echo $row["usu_rol"]; ?>" disabled />
+        <br>
+
+        <a href="../../controladores/usuario/eliminar.php?codigo=<?php echo $row["usu_codigo"]; ?>&rol=USER"><input type="button" id="eliminar" name="eliminar" value="Eliminar"></a>
+        <a href="modificar.php?codigo=<?php echo $row["usu_codigo"]; ?>&rol=USER"><input type="button" id="modifcar" name="modifcar" value="Modificar"></a>
+        <a href="cambiar_contrasena.php?codigo=<?php echo $row["usu_codigo"]; ?>&rol=USER"><input type="button" id="cambiar" name="cambiar" value="Cambiar Contraseña"></a>
         <a href="../../../public/vista/login.html"><input type="button" id="cancelar" name="cancelar" value="Salir"></a>
 
     </form>

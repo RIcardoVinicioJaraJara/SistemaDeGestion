@@ -15,6 +15,12 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
 <body>
     <?php
     $codigo = $_GET["codigo"];
+    $rol = isset($_POST["rol"]) ? trim($_POST["rol"]) : trim($_GET["rol"]);
+    if ($rol == 'USER') {
+        $dir = "index_usuario.php?codigo=$codigo";
+    } else {
+        $dir = "index.php?codigo=$codigo";
+    }
     $sql = "SELECT * FROM usuario where usu_codigo=$codigo";
     include '../../../config/conexionBD.php';
     $result = $conn->query($sql);
@@ -23,7 +29,7 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
 
         while ($row = $result->fetch_assoc()) {
             ?>
-            <form id="formulario01" method="POST" action="../../controladores/usuario/modificar.php">
+            <form id="formulario01" method="POST" action="../../controladores/usuario/modificar.php ?>">
 
                 <input type="hidden" id="codigo" name="codigo" value="<?php echo $codigo ?>" />
                 <label for="cedula">Cedula (*)</label>
@@ -52,9 +58,16 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
                 <label for="correo">Correo electrónico (*)</label>
                 <input type="email" id="correo" name="correo" value="<?php echo $row["usu_correo"]; ?>" required placeholder="Ingrese el correo electrónico ..." />
                 <br>
-
+                <label for="rol">Rol de Usuario (*)</label>
+                <input list="browsers" type="text" id="rol" name="rol" value="<?php echo $row["usu_rol"]; ?>" required placeholder="Ingrese el correo electrónico ..." />
+                <datalist id="browsers">
+                    <option value="ADMIN">
+                    <option value="USER">
+                </datalist>
+                <br>
+                <input id="tipo" name="tipo" type="hidden" value="<?php echo "$rol"; ?>">
                 <input type="submit" id="modificar" name="modificar" value="Modificar" />
-                <input type="reset" id="cancelar" name="cancelar" value="Cancelar" />
+                <input type="reset" id="cancelar" name="cancelar" value="Cancelar" onclick='location.href=" <?php echo "$dir";  ?>"' />
             </form>
         <?php
     }

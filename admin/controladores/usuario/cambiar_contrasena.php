@@ -17,6 +17,7 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
     //incluir conexión a la base de datos
     include '../../../config/conexionBD.php';
     $codigo = $_POST["codigo"];
+    $rol = $_GET['rol'];
     $contrasena1 = isset($_POST["contrasena1"]) ? trim($_POST["contrasena1"]) : null;
     $contrasena2 = isset($_POST["contrasena2"]) ? trim($_POST["contrasena2"]) : null;
     $sqlContrasena1 = "SELECT * FROM usuario where usu_codigo=$codigo and
@@ -39,7 +40,7 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
         echo "<p>La contraseña actual no coincide con nuestros registros!!! </p>";
     }
 
-    if ($row['ADMIN'] == 'ADMIN') {
+    if ($rol == 'ADMIN') {
         echo '<a href="../../vista/usuario/index.php"> <input type="button" id="cancelar" name="cancelar" value="REGRESAR"></a>';
     } else {
         echo '<a href="../../../public/vista/login.html"> <input type="button" id="cancelar" name="cancelar" value="Salir"></a>';
