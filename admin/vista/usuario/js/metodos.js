@@ -32,7 +32,7 @@ function cambiar(opc) {
 
 function correo(cod) {
     var des = document.getElementById('destinatario').value;
-    var emisor = document.getElementById('emisor').value;;
+    var emisor = document.getElementById('emisor').value;
     var asunto = document.getElementById('asunto').value;
     var mensaje = document.getElementById('mensaje').value;
     var asunto = document.getElementById('asunto').value;

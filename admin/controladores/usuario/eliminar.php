@@ -18,6 +18,8 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
     include '../../../config/conexionBD.php';
     $cod = $_GET["cod"];
     $rol = $_GET["rol"];
+    $asunto = isset($_POST["asunto"]) ? trim($_POST["asunto"]) : null;
+    echo "<p>$asunto</p>";
     $codigo = isset($_POST["codigo"]) ? trim($_POST["codigo"]) : trim($_GET["codigo"]);
     $rol = isset($_POST["rol"]) ? trim($_POST["rol"]) : trim($_GET["rol"]);
 

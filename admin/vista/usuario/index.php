@@ -63,7 +63,7 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
         } else {
 
             echo "<tr>";
-            echo " <td colspan=' 7'> No existen usuarios    r  e g  i stradas en el sistema  < / td > ";
+            echo " <td colspan='7'> No existen usuarios    registradas en el sistema  </td> ";
             echo "</tr>";
         }
         $conn->close();
@@ -71,9 +71,9 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
 
 
 
-        </t a b l e b o r d er>
+        </table border>
         <a h re f=" . . /.. /../p ublic/vis t a/logi  n.html ">
-            <inp ut type="b utton" i d="cancel ar" n ame="cancelar" value="Salir">
+            <input type="button" id="cancelar" name="cancelar" value="Salir">
         </a>
 </body>
 
