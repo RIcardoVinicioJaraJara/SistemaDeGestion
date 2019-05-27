@@ -88,8 +88,6 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
                     <th>Asunto</th>
                     <th>Mensaje</th>
                     <th>Quien Envia</th>
-                    <th>Leer</th>
-                    <th>Eliminar</th>
                 </tr>
 
                 <?php
@@ -108,8 +106,6 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
                         echo " <td>" . $row["cor_asunto"] . "</td>";
                         echo " <td>" . $row['cor_mensaje'] . "</td>";
                         echo " <td>" . $row['cor_reseptor'] . "</td>";
-                        echo "   <td><a href='cambiar_contrasena.php?codigo=" . $row['cor_codigo'] . "' > Leer</a> </td>";
-                        echo "   <td><a href='cambiar_contrasena.php?codigo=" . $row['cor_codigo'] . "' > Eliminar</a> </td>";
                     }
                 } else {
 
@@ -125,8 +121,6 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
                     <th>Asunto</th>
                     <th>Mensaje</th>
                     <th>Enviado A</th>
-                    <th>Leer</th>
-                    <th>Eliminar</th>
                 </tr>
 
                 <?php
@@ -145,8 +139,6 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
                         echo " <td>" . $row["cor_asunto"] . "</td>";
                         echo " <td>" . $row['cor_mensaje'] . "</td>";
                         echo " <td>" . $row['cor_reseptor'] . "</td>";
-                        echo "   <td><a href='cambiar_contrasena.php?codigo=" . $row['cor_codigo'] . "' > Leer</a> </td>";
-                        echo "   <td><a href='cambiar_contrasena.php?codigo=" . $row['cor_codigo'] . "' > Eliminar</a> </td>";
                     }
                 } else {
 

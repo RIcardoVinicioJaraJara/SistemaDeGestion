@@ -10,7 +10,7 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
 <head>
     <meta charset="UTF-8">
     <title>Gestión de usuarios</title>
-
+    <link rel='stylesheet' type='text/css' href='css/estilo.css'>
 </head>
 
 <body>

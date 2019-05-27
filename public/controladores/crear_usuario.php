@@ -4,11 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Crear Nuevo Usuario</title>
-    <style type="text/css" rel="stylesheet">
-        .error {
-            color: red;
-        }
-    </style>
 </head>
 
 <body>
