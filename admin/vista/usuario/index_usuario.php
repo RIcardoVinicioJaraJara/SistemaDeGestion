@@ -81,7 +81,7 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
 
         <div id='2'>
             <b>CORREOS RECIBIDOS</b>
-            <table id='11' border>
+            <table id='12' border>
                 <tr>
                     <th>Asunto</th>
                     <th>Mensaje</th>
@@ -89,36 +89,28 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
                     <th>Leer</th>
                     <th>Eliminar</th>
                 </tr>
+
                 <?php
+
                 $codigo = $_GET["codigo"];
+                $sql = "SELECT * FROM usuario where usu_codigo=$codigo";
+                $row = $conn->query($sql)->fetch_assoc();
+
                 $sql = "SELECT * FROM correo  WHERE cor_reseptor = '" . $row['usu_correo'] . "';";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
+
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo " <td>" . $row["usu_cedula"] . "</td>";
-                        echo " <td>" . $row['usu_nombres'] . "</td>";
-                        echo " <td>" . $row['usu_apellidos'] . "</td>";
-                        echo " <td>" . $row['usu_direccion'] . "</td>";
-                        echo " <td>" . $row['usu_telefono'] . "</td>";
-                        echo " <td>" . $row['usu_correo'] . "</td>";
-                        echo " <td>" . $row['usu_fecha_nacimiento'] . "</td>";
-                        echo " <td>" . $row['usu_rol'] . "</td>";
-
-                        if ($row['usu_eliminado'] == 'S') {
-                            echo " <td>" . 'Eliminado' . "</td>";
-                            echo " <td> <a href='reactivar.php?codigo=" . $row['usu_codigo'] . "&rol=ADMIN&cod=" . $codigo . "' > Activar </a></td> ";
-                        } else {
-                            echo " <td> " . 'Activo' . "</td> ";
-                            echo " <td><a href  ='eliminar.php?codigo=" . $row['usu_codigo'] . "&rol=ADMIN&cod=" . $codigo . "' >Eliminar </a></td>";
-                        }
-                        echo "   <td><a href='modificar.php?codigo="  . $row['usu_codigo'] . "&rol=ADMIN&cod=" . $codigo . "' >Modificar </a></td>";
-                        echo "   <td><a href='cambiar_contrasena.php?codigo=" . $row['usu_codigo'] . "&rol=ADMIN&cod=" . $codigo . "' > Cambiar Contraseña</a> </td>";
-
-                        echo "</tr>";
+                        echo " <td>" . $row["cor_asunto"] . "</td>";
+                        echo " <td>" . $row['cor_mensaje'] . "</td>";
+                        echo " <td>" . $row['cor_reseptor'] . "</td>";
+                        echo "   <td><a href='cambiar_contrasena.php?codigo=" . $row['cor_codigo'] . "' > Leer</a> </td>";
+                        echo "   <td><a href='cambiar_contrasena.php?codigo=" . $row['cor_codigo'] . "' > Eliminar</a> </td>";
                     }
                 } else {
+
                     echo "<tr>";
                     echo " <td colspan='7'> No existen correos </td> ";
                     echo "</tr>";
