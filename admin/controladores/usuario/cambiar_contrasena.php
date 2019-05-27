@@ -43,7 +43,7 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
     if ($rol == 'ADMIN') {
         echo '<a href="../../vista/usuario/index.php"> <input type="button" id="cancelar" name="cancelar" value="REGRESAR"></a>';
     } else {
-        echo '<a href="../../../public/vista/login.html"> <input type="button" id="cancelar" name="cancelar" value="Salir"></a>';
+        echo '<a href="../../../config/cerrar_sesion.php"> <input type="button" id="cancelar" name="cancelar" value="Salir"></a>';
     }
     $conn->close();
 

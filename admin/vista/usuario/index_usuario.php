@@ -35,10 +35,10 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
             <label for="cedula">Cedula (*)</label>
             <input type="text" id="cedula" name="cedula" value="<?php echo $row["usu_cedula"]; ?>" disabled />
             <br>
-            <label for="nombres">Nombres (*)></label>
+            <label for="nombres">Nombres (*)</label>
             <input type="text" id="nombres" name="nombres" value="<?php echo $row["usu_nombres"]; ?>" disabled />
             <br>
-            <label for="apellidos">Apelidos (*)></label>
+            <label for="apellidos">Apelidos (*)</label>
             <input type="text" id="apellidos" name="apellidos" value="<?php echo $row["usu_apellidos"]; ?>" disabled />
             <br>
             <label for="direccion">Dirección (*)</label>
@@ -61,12 +61,14 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
                 <input type="button" id=" eliminar " name=" eliminar " value=" Eliminar "></a>
             <a href="modificar.php?codigo=<?php echo $row["usu_codigo"]; ?>&rol=USER&cod=<?php echo $row["usu_codigo"]; ?>"><input type="button" id="modifcar" name="modifcar" value="Modificar"></a>
             <a href="cambiar_contrasena.php?codigo=<?php echo $row["usu_codigo"]; ?>&rol=USER&cod=<?php echo $row["usu_codigo"]; ?>"><input type="button" id="cambiar" name="cambiar" value="Cambiar Contraseña"></a>
-            <a href="../../../public/vista/login.html"><input type="button" id="cancelar" name="cancelar" value="Salir"></a>
+            <a href="../../../config/cerrar_sesion.php"><input type="button" id="cancelar" name="cancelar" value="Salir"></a>
         </div>
         <div id='3'>
             <label for="destinatario">Correo Destinatario (*)</label>
             <input type="text" id="destinatario" name="destinatario" value="" placeholder="Ingrese el correo del destinatario
-                                                    ..." required />
+                                                    ..." onkeyup="buscarCorreo()" required />
+            <label id="informacion">
+            </label>
             <br>
             <label for="asunto"> Asunto (*)</label>
             <input type="text" id="asunto" name="asunto" value="" placeholder="Ingrese el asunto..." required />
@@ -76,7 +78,7 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
             <br>
             <input id='emisor' name='emisor' value="<?php echo $row["usu_correo"]; ?>" type="hidden">
             <a onclick="correo(<?php echo $row['usu_codigo']; ?>)"><input type="button" id="enviar" name="enviar" value="ENVIAR CORREO"></a>
-            <a href="../../../public/vista/login.html"><input type="button" id="cancelar" name="cancelar" value="Salir"></a>
+            <a href="../../../config/cerrar_sesion.php"><input type="button" id="cancelar" name="cancelar" value="Salir"></a>
         </div>
 
         <div id='2'>
@@ -122,7 +124,7 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
                 <tr>
                     <th>Asunto</th>
                     <th>Mensaje</th>
-                    <th>Quien Envia</th>
+                    <th>Enviado A</th>
                     <th>Leer</th>
                     <th>Eliminar</th>
                 </tr>

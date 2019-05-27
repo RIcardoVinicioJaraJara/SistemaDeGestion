@@ -13,6 +13,5 @@
  die("Connection failed: " . $conn->connect_error);
  echo "Error";
  }else{
- echo "<p>Conexión exitosa!! :{ </p>";
+ echo "<p hidden>Conexión exitosa!! :{ </p>";
  }
-?>

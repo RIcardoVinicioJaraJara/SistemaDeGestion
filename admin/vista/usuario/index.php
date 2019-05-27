@@ -71,10 +71,10 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
 
 
 
-        </table border>
-        <a h re f=" . . /.. /../p ublic/vis t a/logi  n.html ">
-            <input type="button" id="cancelar" name="cancelar" value="Salir">
-        </a>
+    </table border>
+    <a href="../../../config/cerrar_sesion.php">
+        <input type="button" id="cancelar" name="cancelar" value="Salir">
+    </a>
 </body>
 
 </html>
