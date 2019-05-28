@@ -23,6 +23,7 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
         <li><a href="#" onclick="cambiar('1')" title="Enlace genérico">CORREOS</a></li>
         <li><a href="#" onclick="cambiar('2')" title="Enlace genérico">NUEVO CORREO</a></li>
         <li><a href="#" onclick="cambiar('3')" title="Enlace genérico">MI CUENTA</a></li>
+        <li><a href="#" onclick="cambiar('4')" title="Enlace genérico">BUSCAR CORREO</a></li>
     </ul>
     <?php
     $codigo = $_GET["codigo"];
@@ -148,6 +149,14 @@ if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
                 }
                 ?>
             </table border>
+        </div>
+
+        <div id="4">
+            <label for="asuntoB"> BUSQUEDA POR ASUSNTO </label>
+            <input type="text" id="asuntoB" name="asuntoB" value="" placeholder="Ingrese el asunto..." onkeyup="buscarAsunto()" required />
+            <br>
+            <div id='busqueda'>
+            </div>
         </div>
         <?php
         $conn->close();

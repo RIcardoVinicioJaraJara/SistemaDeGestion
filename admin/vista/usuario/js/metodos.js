@@ -7,6 +7,8 @@ function cambiar(opc) {
             element1.style.display = 'block';
             var element2 = document.getElementById('3');
             element2.style.display = 'none';
+            var element2 = document.getElementById('4');
+            element2.style.display = 'none';
             break;
         case '2':
             var element = document.getElementById('1');
@@ -14,6 +16,8 @@ function cambiar(opc) {
             var element1 = document.getElementById('3');
             element1.style.display = 'block';
             var element2 = document.getElementById('2');
+            element2.style.display = 'none';
+            var element2 = document.getElementById('4');
             element2.style.display = 'none';
             break;
 
@@ -24,7 +28,18 @@ function cambiar(opc) {
             element1.style.display = 'block';
             var element2 = document.getElementById('3');
             element2.style.display = 'none';
-        default:
+            var element2 = document.getElementById('4');
+            element2.style.display = 'none';
+            break;
+        case '4':
+            var element = document.getElementById('2');
+            element.style.display = 'none';
+            var element1 = document.getElementById('1');
+            element1.style.display = 'none';
+            var element2 = document.getElementById('3');
+            element2.style.display = 'none';
+            var element2 = document.getElementById('4');
+            element2.style.display = 'block';
             break;
     }
 }
@@ -61,6 +76,29 @@ function buscarCorreo() {
             }
         };
         xmlhttp.open("GET", "js/buscar.php?correo=" + correo, true);
+        xmlhttp.send();
+    }
+    return false;
+}
+
+
+function buscarAsunto() {
+    var asunto = document.getElementById("asuntoB").value;
+    var codigo = document.getElementById("codigo").value;
+    if (correo == "") {
+        document.getElementById("busqueda").innerHTML = "";
+    } else {
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("busqueda").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "js/buscarAsunto.php?asunto=" + asunto + "&cod=" + codigo, true);
         xmlhttp.send();
     }
     return false;
