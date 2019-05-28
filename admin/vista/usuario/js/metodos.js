@@ -103,3 +103,23 @@ function buscarAsunto() {
     }
     return false;
 }
+
+function eliminar(cod) {
+    if (cod == "") {
+        document.getElementById("info").innerHTML = "";
+    } else {
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.location.reload(true);
+            }
+        };
+        xmlhttp.open("GET", "js/eliminar.php?cod=" + cod, true);
+        xmlhttp.send();
+    }
+    return false;
+}
